@@ -25,7 +25,7 @@ const User = mongoose.model("User", userSchema);
 
 app.use(bodyParser.json());
 
-app.set('view engine', 'html'); 
+app.set('view engine', 'ejs'); 
 app.use(express.static('views'));
 
 app.get('/', (req, res) => { 
