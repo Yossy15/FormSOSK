@@ -4,14 +4,13 @@ const cors = require("cors");
 const CryptoJS = require("crypto-js");
 const mongoose = require("mongoose");
 const crypto = require('crypto');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
 
 mongoose
-  .connect(
-    "mongodb+srv://yossy:UCm53aKnr9kzdtUj@cluster0.rj3m9.mongodb.net/OSKDB?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((error) => console.error("MongoDB Connection error:", error));
 
