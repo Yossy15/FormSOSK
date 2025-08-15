@@ -4,6 +4,7 @@ const cors = require("cors");
 const CryptoJS = require("crypto-js");
 const mongoose = require("mongoose");
 const crypto = require('crypto');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -24,11 +25,11 @@ const User = mongoose.model("User", userSchema);
 
 app.use(bodyParser.json());
 
-app.set('view engine', 'ejs'); 
+
 app.use(express.static('views'));
 
 app.get('/', (req, res) => { 
-    res.render('login'); 
+    res.sendFile(path.join(__dirname, 'views', 'login.html')); 
 }); 
 
 app.listen(port, () => { 
@@ -95,7 +96,6 @@ app.post("/login", async (req, res) => {
     });
   }
 });
-
 
 app.use(
   cors({
